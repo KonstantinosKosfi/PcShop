@@ -1,4 +1,4 @@
-const Server = "https://localhost:8080/api";
+const Server = import.meta.env.VITE_API_BASE_URL ?? "https://localhost:8080/api";
 
 export const fetchProductByUUid = async (userInput) => {
     try {

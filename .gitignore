@@ -27,6 +27,7 @@ out/
 !**/src/test/**/out/
 logs
 .env*
+appProperties.env
 
 ### NetBeans ###
 /nbproject/private/

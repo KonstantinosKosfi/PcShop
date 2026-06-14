@@ -11,7 +11,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**") // Path pattern you want to allow
-                .allowedOrigins("https://localhost:5173") // React app origin
+                .allowedOrigins(
+                        "https://localhost:5173",
+                        "https://127.0.0.1:5173",
+                        "http://localhost:5173",
+                        "http://127.0.0.1:5173"
+                ) // React app origin
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // Allowed HTTP methods
                 .allowedHeaders("*"); // Allowed headers
     }
