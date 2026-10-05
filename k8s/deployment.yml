@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pcshop
+  labels:
+    app: pcshop
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: pcshop
+
+  template:
+    metadata:
+      labels:
+        app: pcshop
+
+    spec:
+      containers:
+        - name: pcshop
+          image: pcshop:latest
+
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 8080
+
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kubernetes
