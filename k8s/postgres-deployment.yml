@@ -1,34 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pcshop
+  name: postgres
   labels:
-    app: pcshop
+    app: postgres
 
 spec:
   replicas: 1
 
   selector:
     matchLabels:
-      app: pcshop
+      app: postgres
 
   template:
     metadata:
       labels:
-        app: pcshop
+        app: postgres
 
     spec:
       containers:
-        - name: pcshop
-          image: pcshop:latest
+        - name: postgres
+          image: postgres:17
           imagePullPolicy: IfNotPresent
 
           ports:
-            - containerPort: 8080
+            - containerPort: 5432
 
-          envFrom:
-            - secretRef:
-                name: pcshop-secrets
+          env:
+            - name: POSTGRES_DB
+              value: pcshop
+
+            - name: POSTGRES_USER
+              value: pcshop
+
+            - name: POSTGRES_PASSWORD
+              value: pcshop
 
           resources:
             requests:

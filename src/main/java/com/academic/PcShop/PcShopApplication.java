@@ -18,12 +18,11 @@ public class PcShopApplication {
     private static final Logger logger = LoggerFactory.getLogger(PcShopApplication.class);
 
     public static void main(String[] args) {
-        loadEnvVariables();
         SpringApplication.run(PcShopApplication.class, args);
     }
 
     @PostConstruct
-    private static void init() {
+    private void init() {
         File logDir = new File(LOG_DIR);
         if (isValidDirectory(logDir)) {
             File[] logFiles = getLogFiles(logDir);
@@ -60,14 +59,6 @@ public class PcShopApplication {
 
     private static void logDirectoryError(File directory) {
         logger.error("Failed to process directory: {}", directory.getAbsolutePath());
-    }
-
-
-
-    private static void loadEnvVariables() {
-        Dotenv dotenv = Dotenv.configure().filename("appProperties.env").load();
-        Stream.of("DB_URL", "DB_USERNAME", "DB_PASSWORD", "SSL_KEY_STORE_PASSWORD")
-                .forEach(key -> System.setProperty(key, dotenv.get(key)));
     }
 
 }

@@ -1,4 +1,4 @@
-const Server = "https://localhost:8080/api/"
+const Server = "http://localhost:8080/api/"
 
 export const login = async (username, password) => {
     try {

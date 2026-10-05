@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pcshop
+  name: postgres
 
 spec:
   selector:
-    app: pcshop
+    app: postgres
 
   ports:
-    - name: http
+    - name: postgres
       protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 5432
+      targetPort: 5432
 
   type: ClusterIP
