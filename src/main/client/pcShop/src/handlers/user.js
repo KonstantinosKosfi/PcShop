@@ -1,4 +1,4 @@
-const Server = "/api";
+const Server = "/api/";
 
 export const login = async (username, password) => {
     try {

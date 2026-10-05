@@ -1,4 +1,4 @@
-const Server = "/api";
+const Server = "/api/";
 
 export const fetchProductByUUid = async (userInput) => {
     try {
